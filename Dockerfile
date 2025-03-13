@@ -5,7 +5,7 @@ FROM eclipse-temurin:21-jdk-jammy
 WORKDIR /app
 
 # Copy the JAR file (built locally or via Maven)
-COPY target/*.jar app.jar
+COPY target/*.jar API-Rate-Limiter-0.0.1-SNAPSHOT.jar
 
 # Expose port 8080 (Spring Boot default)
 EXPOSE 8080
