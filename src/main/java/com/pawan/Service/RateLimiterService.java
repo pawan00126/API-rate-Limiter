@@ -29,7 +29,7 @@ public class RateLimiterService {
     );
 
     public boolean isAllowed(String userId, String userRole){
-        int requestLimit = ROLE_LIMITS.getOrDefault(userRole, 100);
+        int requestLimit = ROLE_LIMITS.getOrDefault(userRole, 5);
         String key = "rate_limit:"+userId;
 
 //        System.out.println("key : "+key);
@@ -38,6 +38,11 @@ public class RateLimiterService {
                 List.of(key),
                 String.valueOf(60)
         );
+
+        // Handle null case
+        if (requestCount == null) {
+            return false;
+        }
 
         return requestCount<=requestLimit;
     }
