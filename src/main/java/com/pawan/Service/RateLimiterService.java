@@ -29,6 +29,12 @@ public class RateLimiterService {
     );
 
     public boolean isAllowed(String userId, String userRole){
+
+        if (userRole == null) {
+            userRole = "FREE"; // Default role
+        }
+
+
         int requestLimit = ROLE_LIMITS.getOrDefault(userRole, 5);
         String key = "rate_limit:"+userId;
 
