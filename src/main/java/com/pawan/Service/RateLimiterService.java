@@ -6,7 +6,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
+
 import java.util.List;
 import java.util.Map;
 
@@ -45,10 +45,7 @@ public class RateLimiterService {
                 String.valueOf(60)
         );
 
-        // Handle null case
-        if (requestCount == null) {
-            return false;
-        }
+
 
         return requestCount<=requestLimit;
     }
