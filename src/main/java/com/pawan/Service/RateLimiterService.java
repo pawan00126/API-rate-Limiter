@@ -36,7 +36,7 @@ public class RateLimiterService {
         Long requestCount = redisTemplate.execute(
                 new DefaultRedisScript<>(LUA_SCRIPT, Long.class),
                 List.of(key),
-                60
+                String.valueOf(60)
         );
 
         return requestCount<=requestLimit;
